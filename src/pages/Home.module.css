@@ -1,0 +1,22 @@
+body{
+    background-color: whitesmoke;
+    font-family:sans-serif;
+}
+#main{
+    
+    width: 60%;
+    margin: auto;
+}
+.textarea{
+    display: block;
+    border-color: rgb(31, 31, 89);
+    font-size: large;
+}
+.button{
+    width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: rgb(31, 31, 89);
+    color: white;
+    padding: 10px;
+}
