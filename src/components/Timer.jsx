@@ -6,7 +6,7 @@ function Timer() {
   const dispatch = useDispatch();
 
   const [time, setTime] = useState(0);
-  //change timer after every 1000 ms
+  //change timer after every 1000 ms.
   useEffect(() => {
     const timer = setInterval(() => {
       setTime((prevTime) => prevTime + 1);
