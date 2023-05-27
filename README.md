@@ -7,7 +7,7 @@ A  web application for prectice touch typing.
 
 ## To run locally in your system
 
-To clone this project locallly
+Clone this project locallly
 
 ```bash
   git clone https://github.com/kripaShankarPandey/chabbi-assignment.git
