@@ -1,5 +1,5 @@
 import { CORECT_KEY_COUNT, KEY_COUNT, RESET, SHOW_RESULTS } from "./actionType"
-
+//initial state value
 const initialState={
     keyCount:0,
     correctKeyCount:0,
