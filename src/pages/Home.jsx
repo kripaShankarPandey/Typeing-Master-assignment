@@ -48,7 +48,7 @@ const Home = () => {
         onChange={handleInput}
         value={text}
       ></textarea>
-      {/* counting total key pressed in 5 min and accuracy of correct key presses */}
+      {/* counting total key pressed in 5 min and accuracy of correct key presses. */}
       <div className={styles.resuls}>
         {showResult === true ? (
           <h1>
