@@ -4,42 +4,52 @@ import Timer from "../components/Timer";
 import { useSelector, useDispatch } from "react-redux";
 import { correctKeyCountAction, keyCountAction } from "../redux/action";
 const Home = () => {
-  // const str=["a","s","d","f","j","k","l",";"]
+
   const dispatch = useDispatch();
-  const { str, keyCount, correctKeyCount } = useSelector((store) => store);
+  const { str, keyCount, correctKeyCount,showResult } = useSelector((store) => store);
   const [data, setData] = useState("");
   const [randomCharater, setRandomCharater] = useState("");
   const [text, setText] = useState("");
-  // console.log(str,keyCount,correctKeyCount)
+ 
   useEffect(() => {
     let a = Math.floor(Math.random() * str.length);
     setData(str[a]);
     setRandomCharater(str[a]);
-    if (text[text.length - 1] === randomCharater) {
-        dispatch(correctKeyCountAction(1));
-      }
-      console.log("lc", text[text.length - 1], "random", randomCharater,correctKeyCount,keyCount,"ketCount");
+    console.log(text[text.length-1],randomCharater)
+    if(text[text.length-1]===randomCharater){
+      dispatch(correctKeyCountAction())
+    }
   }, [text]);
+
   const handleInput = (e) => {
     setText(e.target.value);
-    dispatch(keyCountAction(1));
+  //dispatching action to count number of pressed keys
+    dispatch(keyCountAction());
   };
- 
+ const handleClick=()=>{
+  window.location.reload();
+ }
   return (
     <div id={styles.main}>
-      <h1>Typing Master</h1>
+      <h1>Typing Master⌨️</h1>
       <Timer />
-      <h1>Type this character:-{data}</h1>
-      <textarea
+      <h1>Type 👉<span>{data}</span> </h1>
+      <textarea disabled={showResult}
         placeholder="type here"
-        rows={20}
-        cols={100}
+        rows={15}
+        cols={90}
         className={styles.textarea}
         onChange={handleInput}
         value={text}
       ></textarea>
-      <button className={styles.button}>START</button>
+      {/* counting total key pressed in 5 min and accuracy of correct key presses */}
+      <div className={styles.resuls}>
+
+      {showResult===true?<h1>Total key pressed <span >{keyCount}</span>  total correct key presses <span >{correctKeyCount}</span>  accuracy rate <span > {Math.floor((correctKeyCount*100)/keyCount)}%</span>😊</h1>:""}
+      </div>
+      <button onClick={handleClick}>RESTART</button>
     </div>
+    
   );
 };
 

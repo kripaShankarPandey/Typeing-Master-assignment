@@ -11,12 +11,27 @@ body{
     display: block;
     border-color: rgb(31, 31, 89);
     font-size: large;
+    padding: 20px;
 }
-.button{
-    width: 60%;
-    margin: auto;
+button{
+    margin-top: 20px;
+    width: 30%;
     border-radius: 10px;
-    background-color: rgb(31, 31, 89);
+    background-color: rgb(40, 6, 192);
     color: white;
     padding: 10px;
+}
+span{
+    color: red;
+    padding: 8px;
+    height: 20px;
+    width: 30px;
+    background: whitesmoke;
+    border-radius: 20%;
+}
+.heading{
+    text-align: center;
+}
+.results span{
+    color: red;
 }
