@@ -3,7 +3,7 @@
 
 A  web application for prectice touch typing.
 
-# Deployed Link https://typemaster-blue.vercel.app
+## Deployed Link https://typemaster-blue.vercel.app
 
 ## To run locally in your system
 
