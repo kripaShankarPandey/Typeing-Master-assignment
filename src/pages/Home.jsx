@@ -2,13 +2,17 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import Timer from "../components/Timer";
 import { useSelector, useDispatch } from "react-redux";
-import { correctKeyCountAction, keyCountAction } from "../redux/action";
+import {
+  correctKeyCountAction,
+  keyCountAction,
+  startAction,
+  stopAction,
+} from "../redux/action";
 const Home = () => {
   const dispatch = useDispatch();
   //Getting Data from Redux store
-  const { str, keyCount, correctKeyCount, showResult } = useSelector(
-    (store) => store
-  );
+  const { str, keyCount, correctKeyCount, showResult, isStart, isStop } =
+    useSelector((store) => store);
   const [data, setData] = useState("");
   const [randomCharater, setRandomCharater] = useState("");
   const [text, setText] = useState("");
@@ -29,18 +33,26 @@ const Home = () => {
     //dispatching action to count number of pressed keys
     dispatch(keyCountAction());
   };
-  const handleClick = () => {
+  //for stop button
+  const handleStop = () => {
+    dispatch(stopAction());
+  };
+  //for start button
+  const handleStart = () => {
+    dispatch(startAction());
+  };
+  const handleRest = () => {
     window.location.reload();
   };
   return (
     <div id={styles.main}>
       <h1>Typing Master⌨️</h1>
-      <Timer />
+      <Timer isStart={isStart} isStop={isStop} />
       <h1>
         Type 👉<span>{data}</span>{" "}
       </h1>
       <textarea
-        disabled={showResult}
+        disabled={showResult || !isStart}
         placeholder="type here"
         rows={15}
         cols={90}
@@ -60,7 +72,9 @@ const Home = () => {
           ""
         )}
       </div>
-      <button onClick={handleClick}>RESTART</button>
+      <button onClick={handleStart}>START</button>
+      <button onClick={handleStop}>STOP</button>
+      <button onClick={handleRest}>RESTART</button>
     </div>
   );
 };
